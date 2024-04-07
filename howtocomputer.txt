@@ -1,0 +1,27 @@
+==== HOW DO I USE THE COMPUTER? ====
+Here's a brief summary of active projects, where they are, and what I'll need to reinstall if I ever nuke Windows. 
+
+++++++ EXAMPLE HEADER
+Example text.
+  REPO: This text will be green. This can be changed in startup.ps1.
+  COMMAND: This text will be green.
+  USERNAME: This text will be green.
+  
+++++++ HOW DID YOU MAKE THIS OPEN ON STARTUP?
+This opens on startup because I told Task Scheduler to open it when I log in.
+The PS script is at \Startup Files\startup.ps1. All code sampled is cited in comments there.
+
+++++++ PERSONAL SITE
+Hugo v0.124 is running on a Ubuntu 22.04 x64 server at 0.0.0.0. The static site is hosted using Github Pages.
+  REPO: example.github.io
+I'm following this guide: https://gohugobrasil.netlify.app/hosting-and-deployment/hosting-on-github/
+The domain will be website.com, which is rented via namecheap
+
+++++++ SSH INTO A SERVER
+The server is at 0.0.0.0 currently, and I can ssh in via Powershell using 
+  COMMAND: ssh user@0.0.0.0
+or from another Ubuntu device using
+  COMMAND: ssh user@0.0.0.0
+  USERNAME can be found in KeePassXC.
+Once the domain is set up, I should be able to remote in using
+  COMMAND: ssh user@domain.com
