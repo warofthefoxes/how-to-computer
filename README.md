@@ -11,8 +11,11 @@ Right-click and run createScheduledTask.ps1 using Powershell to automatically di
 ++++++ FORMATTING:
 
 Lines are colored based on string contents.
+  
   Lines containing "++++++" or "====" will be BLUE
+  
   Lines containing "USERNAME", "COMMAND", or "REPO" will be GREEN.
+  
   All other text is YELLOW.
 
 ++++++ PLANNED FEATURES
