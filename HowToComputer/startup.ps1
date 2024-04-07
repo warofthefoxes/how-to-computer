@@ -7,7 +7,7 @@ function Get-LogColor {
     process {
         if ($LogEntry.Contains("====")) {Return "Blue"}
 	elseif ($LogEntry.Contains("++++++")) {Return "Blue"}
-        elseif ($LogEntry.Contains("username")) {Return "Green"}
+        elseif ($LogEntry.Contains("USERNAME:")) {Return "Green"}
 	elseif ($LogEntry.Contains("COMMAND:")) {Return "Green"}
 	elseif ($LogEntry.Contains("REPO:")) {Return "Green"}
         else {Return "Yellow"}
