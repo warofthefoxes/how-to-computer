@@ -1,20 +1,20 @@
-$logFile = "./howtocomputer.txt"
+$textFile = "./howtocomputer.txt"
 
-function Get-LogColor {
+function Get-textColor {
     Param([Parameter(Position=0)]
-    [String]$LogEntry)
+    [String]$textEntry)
 
     process {
-        if ($LogEntry.Contains("====")) {Return "Blue"}
-	elseif ($LogEntry.Contains("++++++")) {Return "Blue"}
-        elseif ($LogEntry.Contains("USERNAME:")) {Return "Green"}
-	elseif ($LogEntry.Contains("COMMAND:")) {Return "Green"}
-	elseif ($LogEntry.Contains("REPO:")) {Return "Green"}
+        if ($textEntry.Contains("====")) {Return "Blue"}
+	elseif ($textEntry.Contains("++++++")) {Return "Blue"}
+        elseif ($textEntry.Contains("USERNAME:")) {Return "Green"}
+	elseif ($textEntry.Contains("COMMAND:")) {Return "Green"}
+	elseif ($textEntry.Contains("REPO:")) {Return "Green"}
         else {Return "Yellow"}
     }
 }
 
-get-content -wait $logFile | ForEach {Write-Host -ForegroundColor (Get-LogColor $_) $_}
+get-content -wait $textFile | ForEach {Write-Host -ForegroundColor (Get-textColor $_) $_}
 # Above borrowed and modified from https://stackoverflow.com/questions/6132140/colour-coding-get-content-results
 
 PAUSE
