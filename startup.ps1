@@ -5,8 +5,7 @@ function Get-LogColor {
     [String]$LogEntry)
 
     process {
-        if ($LogEntry.Contains("kick your fucking ass.")) {Return "Red"}
-        elseif ($LogEntry.Contains("====")) {Return "Blue"}
+        if ($LogEntry.Contains("====")) {Return "Blue"}
 	elseif ($LogEntry.Contains("++++++")) {Return "Blue"}
         elseif ($LogEntry.Contains("username")) {Return "Green"}
 	elseif ($LogEntry.Contains("COMMAND:")) {Return "Green"}
