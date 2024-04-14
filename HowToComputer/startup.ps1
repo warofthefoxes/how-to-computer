@@ -1,4 +1,4 @@
-$txtfile = "C:\Users\Louis\Desktop\StartupFiles\howtocomputer.txt"
+$HTComputer = "C:\Users\Louis\Desktop\StartupFiles\howtocomputer.txt"
 
 ## Functions
 
@@ -23,18 +23,18 @@ function checkInstallPSMenu {
 
 # asks if user wants to create a file, takes filename, checks for/appends .txt
 function FileCreate {
-    $FileYN = Read-Host -Prompt "Would you like to create a text file? y/n"
+    $FileYN = Read-Host -Prompt ">>>>> Would you like to create a text file? y/n"
     If ($FileYN -imatch "y") {
         
         cd $LibraryDir
         
-        $FileCreateName = Read-Host "What should the filename be?"
+        $FileCreateName = Read-Host ">>>>> What should the filename be?"
         $TxtYN = $FileCreateName -inotcontains ".txt"
             if ($TxtYN = $true) {
              $FileCreateName = -Join ($FileCreateName,".txt")
              }
         
-        $FileContents = Read-Host "Please type your contents."
+        $FileContents = Read-Host ">>>>> Please type your contents."
         New-Item $LibraryDir\"$FileCreateName"
         Add-Content -Path .\$FileCreateName -Value $FileContents
         }
@@ -44,19 +44,22 @@ function FileCreate {
 
  }
 
+
+ # asks if user wants to open a file, clears console and displays text
 function FileYn {
-    $FileYesNo = Read-Host -Prompt "Would you like to open a text file? y/n"
+    $FileYesNo = Read-Host -Prompt ">>>>> Would you like to open a text file? y/n"
      If ( $FileYesNo -imatch "y" ) {
        cd "C:\Users\Louis\Desktop\StartupFiles\Library"
         # even after calling ChangeDir, $LibraryDir was unreadable. Why?
        dir
         # write cooler code to replace this / implement ps-menu
-        $FileInput = Read-Host -prompt "Which file?"
+        $FileInput = Read-Host -prompt ">>>>> Which file?"
         $FileName = -join("$FileInput",".txt")
-       get-content $FileName
+       Clear-Host
+       displayColorText $FileName
      }
      elseIf ($FileYesNo -imatch "n") {
-        # $FileCreate = Read-Host "Would you like to create a text file? y/n"
+        # $FileCreate = Read-Host ">>>>> Would you like to create a text file? y/n"
         FileCreate
      }
  }
@@ -99,10 +102,16 @@ function Get-textColor {
     }
 }
 
+function displayColorText {
+    param ($fileInput)
+    get-content $fileInput | ForEach {Write-Host -ForegroundColor (Get-textColor $_) $_}
+} 
+
+Clear-Host
 ChangeDir
 checkInstallPSMenu
 
-get-content $txtfile | ForEach {Write-Host -ForegroundColor (Get-textColor $_) $_}
+displayColorText $HTComputer
 
 # $null = Read-Host -Prompt "Press the ANY key"
 # change this to prompt for user input
